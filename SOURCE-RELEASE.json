@@ -1,0 +1,14 @@
+{
+  "application": "Knightly",
+  "version": "1.0.0",
+  "candidateBuild": "1",
+  "appSourceLicense": "GPL-3.0-or-later",
+  "ownerApprovalDate": "2026-10-30",
+  "sourceCommit": "6fd992111458d4be5c580dfb7f8690cde12ee8bd",
+  "archive": "Knightly-testflight-source-6fd9921.zip",
+  "bytes": 65943628,
+  "sha256": "4ba343f6e1d0e52ccd8090fb0969e3f7550ee9c731d33ee8b8d9abbb1ac9dcc4",
+  "sourceFiles": 303,
+  "appleApprovalClaimed": false,
+  "publicTestFlightLinkClaimed": false
+}
