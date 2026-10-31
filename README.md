@@ -8,17 +8,19 @@ This repository publishes corresponding app/native-engine source packages. Sourc
 
 | Platform / version | Source checkpoint | Source package |
 | --- | --- | --- |
+| iOS TestFlight 1.0.0 (4) | `9dc9b7c703fd0c317823cc0511209d4c7b49a7b2` | [iOS build 4 source release](../../releases/tag/ios-1.0.0-4-source) |
 | iOS TestFlight 1.0.0 (3) | `5dac296c065c08d4836112f9b8c9f92998059f63` | [iOS build 3 source release](../../releases/tag/ios-1.0.0-3-source) |
 | iOS 1.0.0 (2) | `7f9249090eae9a4e2e486ddde8c5caf8eca05309` | [iOS build 2 source release](../../releases/tag/ios-1.0.0-2-source) |
 | iOS TestFlight 1.0.0 (1) | `6fd992111458d4be5c580dfb7f8690cde12ee8bd` | [iOS source release](../../releases/tag/ios-1.0.0-1-source) |
 | Android 1.0.0 (2) | `34a02bb8eb0cea5cd527a43db01213d3ec7075a7` | [Android source release](../../releases/tag/android-1.0.0-2-source) |
 
+- iOS build 4: `Knightly-ios-build4-source-9dc9b7c.zip`, 65,933,993 bytes, 296 files. SHA256 `18c119ae66a049cc9c8fc266e1670e50172e1e491edebbf949ec1175b275e4ba`.
 - iOS build 3: `Knightly-ios-build3-source-5dac296.zip`, 65,932,498 bytes, 294 files. SHA256 `29fac06f43c02b7e81222358eb3629db9ef3f577ca28c9b07fc50b7de46aadb9`.
 - iOS build 2: `Knightly-ios-build2-source-7f92490.zip`, 65,929,883 bytes, 293 files. SHA256 `b7f8a41c91e358378b467725899659c77f31fab411faf6506441ebaf0d70877b`.
 - iOS build 1: `Knightly-testflight-source-6fd9921.zip`, 65,943,628 bytes, 303 source/build-input files. SHA256 `4ba343f6e1d0e52ccd8090fb0969e3f7550ee9c731d33ee8b8d9abbb1ac9dcc4`. Existing release/archive preserved.
 - Android: `Knightly-android-code2-source-34a02bb-r3.zip`, 66,133,909 bytes, 307 files. SHA256 `01202d67547c0de1e320cc27fe27d3d4cd2c528088530067d7a6ff23eff8eeb3`. The app runtime remains checkpoint `f7bdd6f`; the later source checkpoint includes the exact versioned Android build tooling.
 
-Each archive includes app/engine source, bundled training data and evaluation networks, platform bridges, tests, package lockfile and its generated native project. SOURCE_MANIFEST.json records individual input hashes. Credentials, signing keys/profiles, private backend implementation, raw QA and operator documents are excluded. The Android and iOS build 2/3 BUILD-ENV.example files contain only the public client SDK/build settings already embedded in that app.
+Each archive includes app/engine source, bundled training data and evaluation networks, platform bridges, tests, package lockfile and its generated native project. SOURCE_MANIFEST.json records individual input hashes. Credentials, signing keys/profiles, private backend implementation, raw QA and operator documents are excluded. The Android and iOS build 2/3/4 BUILD-ENV.example files contain only the public client SDK/build settings already embedded in that app.
 
 ## Build Android 1.0.0 (2)
 
@@ -32,6 +34,16 @@ cd android
 ```
 
 This produces an unsigned bundle without a signing key. Use your own signing setup for installation/distribution; do not upload another code-2 binary to Google Play. A separate isolated restore/build passes all three TypeScript targets, 129 app tests and 12 native-tool checks. Both DEX files, JavaScript and both evaluation networks are byte-identical to the frozen signed code-2 bundle. Thirty native libraries are byte-identical; the other ten differ only in their ELF build-ID notes. All forty native libraries' remaining bytes match. Debug-symbol metadata and the upload signature differ, so a whole-AAB bit-identical rebuild is not claimed. ANDROID-CODE2-SOURCE.json records the source/package identities.
+
+## Build iOS 1.0.0 (4)
+
+Use the build 4 archive with the same toolchain and unsigned-archive command described below for build 2. The supplied native project identifies build 4. This update removes overlapping native training/ad-loading modals, waits for the training screen to leave before presenting an SDK ad, clears loading after failures and skips interstitials when no unit is configured.
+
+**This TestFlight build uses visibly marked Google demo test ads.** Its BUILD-ENV.example sets the test-ad flag on; production unit fields, debug geography and diagnostics remain off. This is not evidence of production ad serving. The exact signed IPA SHA256 is `153b0cf822bdc214fe4985cf14d75c757ffc9b8b2505d52f8f2d6eb2a8d85be9`.
+
+The local arm64 iPhoneOS archive, signed export, all 56 first-party bundle inputs, both evaluation networks and privacy/attribution metadata pass verification. The prepared source passes 162 app tests, three TypeScript targets and 12 included native-tool checks using existing installed dependencies. Archive CRC, every supplied-file hash, private-pattern/known-private-value scans and an actual unauthenticated source download pass. An independent native rebuild of this ZIP has not been performed; whole-IPA bit reproducibility is not claimed.
+
+On 31 October 2026, Fastlane uploads the exact signed build 4. Apple processing/export compliance pass, and both internal and open-beta states report Testing. The public invitation remains [TestFlight](https://testflight.apple.com/join/WWR36spt). The reported build 3 freeze still requires confirmation on the owner's iPhone after updating; current-build iPhone gameplay and paid cloud sync are separate verification gates.
 
 ## Build iOS 1.0.0 (3)
 
@@ -64,4 +76,4 @@ Copyright © 2026 Domenico Di Donna for original Knightly application code. That
 
 Stockfish 17.1, the native integration and upstream notices retain GPL-3.0-or-later. Third-party assets/software retain their own licenses and attributions in THIRD_PARTY.md, the engine README and upstream files. NNUE data retains its documented CC0 terms. This grant does not imply ownership or relicensing of third-party components, names or trademarks. Private backend implementation is outside these app-source packages and this grant.
 
-The iOS build 1 archive predates the owner's approval and retains the Expo starter MIT notice as its root LICENSE. That notice is reproduced separately as [NOTICE-EXPO.txt](NOTICE-EXPO.txt); it does not replace the GPL grant for original Knightly code or the engine. Its historical preparation-status note is superseded by the approved iOS release. The Android and iOS build 2/3 archives have GPL text at LICENSE and preserve the Expo notice separately at NOTICE-EXPO.txt.
+The iOS build 1 archive predates the owner's approval and retains the Expo starter MIT notice as its root LICENSE. That notice is reproduced separately as [NOTICE-EXPO.txt](NOTICE-EXPO.txt); it does not replace the GPL grant for original Knightly code or the engine. Its historical preparation-status note is superseded by the approved iOS release. The Android and iOS build 2/3/4 archives have GPL text at LICENSE and preserve the Expo notice separately at NOTICE-EXPO.txt.
