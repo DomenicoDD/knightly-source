@@ -8,7 +8,7 @@ This repository publishes corresponding app/native-engine source packages. Sourc
 
 | Platform / version | Source checkpoint | Source package |
 | --- | --- | --- |
-| iOS 1.0.0 (3) | `5dac296c065c08d4836112f9b8c9f92998059f63` | [iOS build 3 source release](../../releases/tag/ios-1.0.0-3-source) |
+| iOS TestFlight 1.0.0 (3) | `5dac296c065c08d4836112f9b8c9f92998059f63` | [iOS build 3 source release](../../releases/tag/ios-1.0.0-3-source) |
 | iOS 1.0.0 (2) | `7f9249090eae9a4e2e486ddde8c5caf8eca05309` | [iOS build 2 source release](../../releases/tag/ios-1.0.0-2-source) |
 | iOS TestFlight 1.0.0 (1) | `6fd992111458d4be5c580dfb7f8690cde12ee8bd` | [iOS source release](../../releases/tag/ios-1.0.0-1-source) |
 | Android 1.0.0 (2) | `34a02bb8eb0cea5cd527a43db01213d3ec7075a7` | [Android source release](../../releases/tag/android-1.0.0-2-source) |
@@ -37,7 +37,7 @@ This produces an unsigned bundle without a signing key. Use your own signing set
 
 Use the build 3 archive with the same toolchain and unsigned-archive command described below for build 2. The supplied native project identifies build 3. This update includes saved-game capacity checks and recovery of an earned unlock after storage failure. Its signed IPA SHA256 is `a3d2573540cb97667b4dea7f50b55f6da959e5800ea8b3a36cf4d13b46f03b4d`.
 
-The local iPhoneOS archive and signed export pass; all 55 first-party JavaScript bundle inputs match the frozen Git source. Both evaluation networks, privacy/attribution metadata, existing provisioning profile and distribution certificate are verified. The prepared source passes 158 app tests, three TypeScript targets and 12 included native-tool checks using the existing installed dependencies. ZIP CRC, every supplied-file hash and private-pattern/known-private-value scans pass. Release-packaging-only credential fixtures are excluded. An independent native rebuild of this build 3 ZIP has not been performed; whole-IPA bit reproducibility is not claimed. Apple upload/processing and current-build iPhone gameplay remain unverified.
+The local iPhoneOS archive and signed export pass; all 55 first-party JavaScript bundle inputs match the frozen Git source. Both evaluation networks, privacy/attribution metadata, existing provisioning profile and distribution certificate are verified. The prepared source passes 158 app tests, three TypeScript targets and 12 included native-tool checks using the existing installed dependencies. ZIP CRC, every supplied-file hash and private-pattern/known-private-value scans pass. Release-packaging-only credential fixtures are excluded. An independent native rebuild of this build 3 ZIP has not been performed; whole-IPA bit reproducibility is not claimed. On 31 October 2026, the exact signed build 3 is uploaded through Fastlane, passes Apple processing/export compliance and reports Testing in both the internal group and Knightly Open Beta. The public invitation is [TestFlight](https://testflight.apple.com/join/WWR36spt). Current-build iPhone gameplay and paid cloud sync still require their own runtime verification.
 
 ## Build iOS 1.0.0 (2)
 
