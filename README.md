@@ -8,19 +8,21 @@ This repository publishes corresponding app/native-engine source packages. Sourc
 
 | Platform / version | Source checkpoint | Source package |
 | --- | --- | --- |
+| iOS TestFlight 1.0.0 (5) | `23bbfd5a9c0e8616185ba379ee129cf46b67a36d` | [iOS build 5 source release](../../releases/tag/ios-1.0.0-5-source) |
 | iOS TestFlight 1.0.0 (4) | `9dc9b7c703fd0c317823cc0511209d4c7b49a7b2` | [iOS build 4 source release](../../releases/tag/ios-1.0.0-4-source) |
 | iOS TestFlight 1.0.0 (3) | `5dac296c065c08d4836112f9b8c9f92998059f63` | [iOS build 3 source release](../../releases/tag/ios-1.0.0-3-source) |
 | iOS 1.0.0 (2) | `7f9249090eae9a4e2e486ddde8c5caf8eca05309` | [iOS build 2 source release](../../releases/tag/ios-1.0.0-2-source) |
 | iOS TestFlight 1.0.0 (1) | `6fd992111458d4be5c580dfb7f8690cde12ee8bd` | [iOS source release](../../releases/tag/ios-1.0.0-1-source) |
 | Android 1.0.0 (2) | `34a02bb8eb0cea5cd527a43db01213d3ec7075a7` | [Android source release](../../releases/tag/android-1.0.0-2-source) |
 
+- iOS build 5: `Knightly-ios-build5-source-23bbfd5.zip`, 67,484,472 bytes, 304 files. SHA256 `1049d66c116b1cf51b3c587e77a3fcdebdc3584b86326ed6b7032cae461b1249`.
 - iOS build 4: `Knightly-ios-build4-source-9dc9b7c.zip`, 65,933,993 bytes, 296 files. SHA256 `18c119ae66a049cc9c8fc266e1670e50172e1e491edebbf949ec1175b275e4ba`.
 - iOS build 3: `Knightly-ios-build3-source-5dac296.zip`, 65,932,498 bytes, 294 files. SHA256 `29fac06f43c02b7e81222358eb3629db9ef3f577ca28c9b07fc50b7de46aadb9`.
 - iOS build 2: `Knightly-ios-build2-source-7f92490.zip`, 65,929,883 bytes, 293 files. SHA256 `b7f8a41c91e358378b467725899659c77f31fab411faf6506441ebaf0d70877b`.
 - iOS build 1: `Knightly-testflight-source-6fd9921.zip`, 65,943,628 bytes, 303 source/build-input files. SHA256 `4ba343f6e1d0e52ccd8090fb0969e3f7550ee9c731d33ee8b8d9abbb1ac9dcc4`. Existing release/archive preserved.
 - Android: `Knightly-android-code2-source-34a02bb-r3.zip`, 66,133,909 bytes, 307 files. SHA256 `01202d67547c0de1e320cc27fe27d3d4cd2c528088530067d7a6ff23eff8eeb3`. The app runtime remains checkpoint `f7bdd6f`; the later source checkpoint includes the exact versioned Android build tooling.
 
-Each archive includes app/engine source, bundled training data and evaluation networks, platform bridges, tests, package lockfile and its generated native project. SOURCE_MANIFEST.json records individual input hashes. Credentials, signing keys/profiles, private backend implementation, raw QA and operator documents are excluded. The Android and iOS build 2/3/4 BUILD-ENV.example files contain only the public client SDK/build settings already embedded in that app.
+Each archive includes app/engine source, bundled training data and evaluation networks, platform bridges, tests, package lockfile and its generated native project. SOURCE_MANIFEST.json records individual input hashes. Credentials, signing keys/profiles, private backend implementation, raw QA and operator documents are excluded. The Android and iOS build 2/3/4/5 BUILD-ENV.example files contain only the public client SDK/build settings already embedded in that app.
 
 ## Build Android 1.0.0 (2)
 
@@ -34,6 +36,14 @@ cd android
 ```
 
 This produces an unsigned bundle without a signing key. Use your own signing setup for installation/distribution; do not upload another code-2 binary to Google Play. A separate isolated restore/build passes all three TypeScript targets, 129 app tests and 12 native-tool checks. Both DEX files, JavaScript and both evaluation networks are byte-identical to the frozen signed code-2 bundle. Thirty native libraries are byte-identical; the other ten differ only in their ELF build-ID notes. All forty native libraries' remaining bytes match. Debug-symbol metadata and the upload signature differ, so a whole-AAB bit-identical rebuild is not claimed. ANDROID-CODE2-SOURCE.json records the source/package identities.
+
+## Build iOS 1.0.0 (5)
+
+Use the build 5 archive with the same toolchain and unsigned-archive command described below for build 2. The supplied project identifies build 5. It includes PR #2: one continuous phone session scroll, pinned Hint/Their plan/Undo/Flip controls, shared chips/confirmation controls and phone bottom sheets. The existing ad-break fix is retained.
+
+This TestFlight build continues to use visibly marked Google demo test ads. BUILD-ENV.example records that flag; production unit fields, debug geography and diagnostics stay off. The exact signed IPA SHA256 is `0e960cf78cd9798ddd890472e583cc1222e957c761df4ea0b653f6d4743af317`.
+
+The local arm64 iPhoneOS archive and signed export pass. All 57 first-party JavaScript inputs match frozen source `23bbfd5`; both networks, privacy metadata, 50 attribution entries and the existing signing profile are verified. Source ZIP CRC, all 303 manifest inputs and private-value scans pass; an anonymous download matches its published SHA256. The merged private project passes 162 app tests, three TypeScript targets, 20 native-tool checks and 43 account/website tests. An independent native rebuild from this public source ZIP has not been performed; whole-IPA bit reproducibility is not claimed. Apple accepts the upload and reports build 5 as VALID on 1 November 2026. Device gameplay, production ads and paid cloud sync require their own runtime verification.
 
 ## Build iOS 1.0.0 (4)
 
