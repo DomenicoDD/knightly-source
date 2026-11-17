@@ -8,6 +8,7 @@ This repository publishes corresponding app/native-engine source packages. Sourc
 
 | Platform / version | Source checkpoint | Source package |
 | --- | --- | --- |
+| iOS TestFlight 1.0.0 (17) | `b3d99b1c5d65c259e917149449037a476a28e412` | [iOS build 17 source release](../../releases/tag/ios-1.0.0-17-source) |
 | iOS TestFlight 1.0.0 (16) | `adacf8bc406f5ab4766900c673311c01c98ab85e` | [iOS build 16 source release](../../releases/tag/ios-1.0.0-16-source) |
 | iOS TestFlight 1.0.0 (15) | `fae49be71e77c902254d9492fb7cd5888d59dcd6` | [iOS build 15 source release](../../releases/tag/ios-1.0.0-15-source) |
 | iOS TestFlight 1.0.0 (14) | `cb264dfca2ac04664bfa7d416d71e40338905587` | [iOS build 14 source release](../../releases/tag/ios-1.0.0-14-source) |
@@ -20,6 +21,7 @@ This repository publishes corresponding app/native-engine source packages. Sourc
 | iOS TestFlight 1.0.0 (1) | `6fd992111458d4be5c580dfb7f8690cde12ee8bd` | [iOS source release](../../releases/tag/ios-1.0.0-1-source) |
 | Android 1.0.0 (2) | `34a02bb8eb0cea5cd527a43db01213d3ec7075a7` | [Android source release](../../releases/tag/android-1.0.0-2-source) |
 
+- iOS build 17: `Knightly-ios-build17-source-b3d99b1.zip`, 67,860,745 bytes, 406 files. SHA256 `0da6e2fe79782efe62317c6f5163fb890f182025b8346ad7f25c221d5a16bc7b`.
 - iOS build 16: `Knightly-ios-build16-source-adacf8b.zip`, 67,722,408 bytes, 401 files. SHA256 `d988b867d4a8393623655d02a787677d204025b53d29b05e0ece321c6d608ad5`.
 - iOS build 15: `Knightly-ios-build15-source-fae49be.zip`, 67,623,408 bytes, 361 files. SHA256 `8e8133628cb5a34e5dbff184d011bb1582bed259929cc757c0507d1d97c7d40d`.
 - iOS build 14: `Knightly-ios-build14-source-cb264df.zip`, 67,581,370 bytes, 351 files. SHA256 `913ff32c0dcfeba41af061eba4a8aee4271ae1b75baa9fed5a613cdccc96f896`.
@@ -32,7 +34,7 @@ This repository publishes corresponding app/native-engine source packages. Sourc
 - iOS build 1: `Knightly-testflight-source-6fd9921.zip`, 65,943,628 bytes, 303 source/build-input files. SHA256 `4ba343f6e1d0e52ccd8090fb0969e3f7550ee9c731d33ee8b8d9abbb1ac9dcc4`. Existing release/archive preserved.
 - Android: `Knightly-android-code2-source-34a02bb-r3.zip`, 66,133,909 bytes, 307 files. SHA256 `01202d67547c0de1e320cc27fe27d3d4cd2c528088530067d7a6ff23eff8eeb3`. The app runtime remains checkpoint `f7bdd6f`; the later source checkpoint includes the exact versioned Android build tooling.
 
-Each archive includes app/engine source, bundled training data and evaluation networks, platform bridges, tests, package lockfile and its generated native project. SOURCE_MANIFEST.json records individual input hashes. Credentials, signing keys/profiles, private backend implementation, raw QA and operator documents are excluded. The Android and iOS build 2/3/4/5/6/7/14/15/16 BUILD-ENV.example files contain only the public client SDK/build settings already embedded in that app.
+Each archive includes app/engine source, bundled training data and evaluation networks, platform bridges, tests, package lockfile and its generated native project. SOURCE_MANIFEST.json records individual input hashes. Credentials, signing keys/profiles, private backend implementation, raw QA and operator documents are excluded. The Android and iOS build 2/3/4/5/6/7/14/15/16/17 BUILD-ENV.example files contain only the public client SDK/build settings already embedded in that app.
 
 ## Build Android 1.0.0 (2)
 
@@ -46,6 +48,14 @@ cd android
 ```
 
 This produces an unsigned bundle without a signing key. Use your own signing setup for installation/distribution; do not upload another code-2 binary to Google Play. A separate isolated restore/build passes all three TypeScript targets, 129 app tests and 12 native-tool checks. Both DEX files, JavaScript and both evaluation networks are byte-identical to the frozen signed code-2 bundle. Thirty native libraries are byte-identical; the other ten differ only in their ELF build-ID notes. All forty native libraries' remaining bytes match. Debug-symbol metadata and the upload signature differ, so a whole-AAB bit-identical rebuild is not claimed. ANDROID-CODE2-SOURCE.json records the source/package identities.
+
+## Build iOS 1.0.0 (17)
+
+Use the build 17 archive with the same toolchain and unsigned-archive command described below for build 2. The supplied project identifies build 17. It adds Italian alongside English: the app follows the device language or the choice saved in Profile, and its screens, lessons, puzzles, courses, reviews and Pip's explanations are translated (`src/i18n/`). There is no new dependency; the CocoaPods graph is unchanged from build 16. The hosted endpoints for Pip's online voice, checkup script and share links belong to the private backend and are not included; without them the app keeps the rule-based text.
+
+This beta uses visibly marked Google demo test ads and a local, on-device ad-break trace; BUILD-ENV.example records both flags. Production unit fields and debug geography stay off. The exact signed IPA SHA256 is `174966228baaa727aec6a7f1639bf292bfec4a0bcf81d24d2595e6acb5ead530`.
+
+The source ZIP passes CRC; 384 inputs are byte-identical to the Git checkpoint and all 116 first-party JavaScript bundle inputs match; exclusion and private-value scans pass. An anonymous download matches the published SHA256. No independent native rebuild from this new ZIP, whole-IPA bit reproducibility or new iPhone gameplay result is claimed. Public accounts, production ad units and verified paid sync remain outside this beta.
 
 ## Build iOS 1.0.0 (16)
 
