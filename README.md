@@ -8,6 +8,7 @@ This repository publishes corresponding app/native-engine source packages. Sourc
 
 | Platform / version | Source checkpoint | Source package |
 | --- | --- | --- |
+| iOS TestFlight 1.0.0 (19) | `c0cf0f23388ec2c48320d65008859310e28f99ac` | [iOS build 19 source release](../../releases/tag/ios-1.0.0-19-source) |
 | iOS TestFlight 1.0.0 (18) | `1be1ccc6ecb76dc5d0f0f0d7a070a723ccbdf1ad` | [iOS build 18 source release](../../releases/tag/ios-1.0.0-18-source) |
 | iOS TestFlight 1.0.0 (17) | `b3d99b1c5d65c259e917149449037a476a28e412` | [iOS build 17 source release](../../releases/tag/ios-1.0.0-17-source) |
 | iOS TestFlight 1.0.0 (16) | `adacf8bc406f5ab4766900c673311c01c98ab85e` | [iOS build 16 source release](../../releases/tag/ios-1.0.0-16-source) |
@@ -22,6 +23,7 @@ This repository publishes corresponding app/native-engine source packages. Sourc
 | iOS TestFlight 1.0.0 (1) | `6fd992111458d4be5c580dfb7f8690cde12ee8bd` | [iOS source release](../../releases/tag/ios-1.0.0-1-source) |
 | Android 1.0.0 (2) | `34a02bb8eb0cea5cd527a43db01213d3ec7075a7` | [Android source release](../../releases/tag/android-1.0.0-2-source) |
 
+- iOS build 19: `Knightly-ios-build19-source-c0cf0f2.zip`, 70,594,894 bytes, 558 files. SHA256 `929e83658900c6bcfb7b0160bd3d1f4fcba45fa43ce17f009a8b430c355f1a44`.
 - iOS build 18: `Knightly-ios-build18-source-1be1ccc.zip`, 70,552,336 bytes, 543 files. SHA256 `dfc85c7195bb024b27f528db98907fce2cdfcdfdaaa92e6fba47d62907c6665b`.
 - iOS build 17: `Knightly-ios-build17-source-b3d99b1.zip`, 67,860,745 bytes, 406 files. SHA256 `0da6e2fe79782efe62317c6f5163fb890f182025b8346ad7f25c221d5a16bc7b`.
 - iOS build 16: `Knightly-ios-build16-source-adacf8b.zip`, 67,722,408 bytes, 401 files. SHA256 `d988b867d4a8393623655d02a787677d204025b53d29b05e0ece321c6d608ad5`.
